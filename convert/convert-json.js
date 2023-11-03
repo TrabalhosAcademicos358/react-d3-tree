@@ -6,7 +6,18 @@ let jsonResult = {};
 
 const separatePath = '->';
 
-const createObj = (name, attributes) => {
+const modifyAtributesVisualization = (obj) => {
+  let newObj = {};
+
+  Object.keys(obj).forEach(key => {
+    newObj[key] = obj[key].length;
+  })
+
+  return newObj;
+}
+
+const createObj = (name, objAttributes) => {
+  const attributes = modifyAtributesVisualization(objAttributes);
   return { name, children: [], attributes };
 };
 
@@ -29,10 +40,7 @@ Object.keys(json)
   .forEach(key => {
     const pathTestCase = key.split(separatePath);
     if (pathTestCase.length > 1) {
-      // pathTestCase.pop();
-      // const stringIdNodeSource = pathTestCase.join(separatePath);
       addChildrenObj(key, json[key])
-      // return { source: stringIdNodeSource, target: key, value: 4 };
     } else {
       const newObj = createObj(key, json[key]);
       jsonResult = { ...jsonResult, ...newObj };

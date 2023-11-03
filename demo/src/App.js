@@ -12,6 +12,7 @@ import './App.css';
 import orgChartJson from './examples/org-chart.json';
 import flareJson from './examples/d3-hierarchy-flare.json';
 import reactTree from './examples/reactRepoTree';
+import results from './examples/results.json'
 
 console.log('Demo React version: ', React.version);
 
@@ -78,9 +79,9 @@ class App extends Component {
     this.addedNodesCount = 0;
 
     this.state = {
-      data: orgChartJson,
-      totalNodeCount: countNodes(0, Array.isArray(orgChartJson) ? orgChartJson[0] : orgChartJson),
-      orientation: 'horizontal',
+      data: results,
+      totalNodeCount: countNodes(0, Array.isArray(results) ? results[0] : results),
+      orientation: 'vertical',
       dimensions: undefined,
       centeringTransitionDuration: 800,
       translateX: 200,
@@ -315,6 +316,13 @@ class App extends Component {
                     onClick={() => this.setTreeData(reactTree)}
                   >
                     React repository (large)
+                  </button>
+                  <button
+                    type="button"
+                    className="btn btn-controls btn-block"
+                    onClick={() => this.setTreeData(results)}
+                  >
+                    Resultados
                   </button>
                 </div>
               </div>

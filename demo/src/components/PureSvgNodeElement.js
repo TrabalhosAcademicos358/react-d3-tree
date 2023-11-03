@@ -39,6 +39,7 @@ const PureSvgNodeElement = ({ nodeDatum, orientation, toggleNode, onNodeClick })
           onClick={onNodeClick}
         >
           {nodeDatum.name}
+          {nodeDatum.children.length > 0 && " - (Expansive)"}
         </text>
         <text className="rd3t-label__attributes" {...textLayout[orientation].attributes}>
           {nodeDatum.attributes &&
